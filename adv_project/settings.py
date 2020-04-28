@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [config("ALLOWED_HOSTS")]
 
 
 # Application definition
@@ -96,6 +96,7 @@ WSGI_APPLICATION = 'adv_project.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {}
 DATABASES['default'] = dj_database_url.parse(config("DATABASE_URL"))
+DATABASES['default']['OPTIONS'] = {'sslmode': 'disable'}
 
 
 # Password validation
